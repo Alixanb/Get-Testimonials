@@ -1,0 +1,24 @@
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { signIn } from "@/auth/auth";
+import { LogIn } from "lucide-react";
+
+const SigninButton = () => {
+  return (
+    <form>
+      <Button
+        variant="secondary"
+        size="sm"
+        formAction={async () => {
+          "use server";
+          await signIn();
+        }}
+      >
+        <LogIn size={16} className="mr-2" />
+        Sign In
+      </Button>
+    </form>
+  );
+};
+
+export default SigninButton;
