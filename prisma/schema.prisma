@@ -74,17 +74,20 @@ enum Plan {
 model Product {
   id              String  @id @default(cuid())
   name            String
+  slug String @unique
   note            String?
   information     String?
   review          String?
   thanks          String?
   backgroundColor String?
+  enabled Boolean @default(true)
 
-  reviews Review[]
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String
 
+  reviews Review[]
+  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
